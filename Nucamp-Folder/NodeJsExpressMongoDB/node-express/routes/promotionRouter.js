@@ -1,14 +1,14 @@
 const express = require('express');
-const campsiteRouter = express.Router();
+const promotionRouter = express.Router();
 
-campsiteRouter.route('/')
+promotionRouter.route('/')
 .all((req, res, next) => {
     res.statusCode = 200;
     res.setHeader('Content-Type', 'text/plain');
     next();
 })
 .get((req, res) => {
-    res.end('Will send all the campsites to you');
+    res.end('Will send all the campsites to you.')
 })
 .post((req, res) => {
     res.end(`Will add the campsite: ${req.body.name} with description: ${req.body.description}`);
@@ -19,17 +19,17 @@ campsiteRouter.route('/')
 })
 .delete((req, res) => {
     res.end('Deleting all campsites');
-});
+})
 
-campsiteRouter.route('campites/:campsiteId')
-.all((req, res, next,) => {
+promotionRouter.route('promotions/promotionId')
+.all((req, res) => {
     res.statusCode = 200;
-    res.setHeader('Content-type', 'text/plain');
+    res.setHeader('Content-Type', 'text/plain');
     next();
 })
 .get((req, res) => {
     res.end(`Will send all the campsites to you`);
-}) 
+})
 .post((req, res) => {
     res.end(`Will add the campsite: ${req.body.name}, with description: ${req.body.description}`);
 })
@@ -40,4 +40,4 @@ campsiteRouter.route('campites/:campsiteId')
 .delete((req, res) => {
     res.end(`Deleteing all campsites`);
 })
-module.exports = campsiteRouter;
+module.exports = promotionRouter;
